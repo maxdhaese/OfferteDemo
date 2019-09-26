@@ -1,9 +1,6 @@
 package be.intecbrussel;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.util.List;
 
@@ -17,7 +14,7 @@ public class Client {
     @Email
     private String email;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private List<Offerte> offerteList;
 
     public Client() {

@@ -12,7 +12,7 @@ public class Product {
     @GeneratedValue
     private Integer idProduct;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "productList")
     private Set<Offerte> offerteSet;
 
     public Product() {

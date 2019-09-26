@@ -1,6 +1,7 @@
 package be.intecbrussel;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -12,6 +13,9 @@ public class Offerte {
 
     @ManyToOne
     private Client client;
+
+    @ManyToMany
+    private List<Product> productList;
 
     public Offerte() {
     }
@@ -38,5 +42,13 @@ public class Offerte {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
     }
 }
