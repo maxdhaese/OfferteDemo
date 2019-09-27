@@ -1,46 +1,46 @@
 package be.intecbrussel.repository;
 
-import be.intecbrussel.Offerte;
+import be.intecbrussel.Order;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-public class OfferteRepositoryImpl implements OfferteRepository {
+public class OrderRepositoryImpl implements OrderRepository {
 
     private final EntityManagerFactory emf;
 
-    public OfferteRepositoryImpl(EntityManagerFactory emf) {
+    public OrderRepositoryImpl(EntityManagerFactory emf) {
         this.emf = emf;
     }
 
     @Override
-    public Offerte saveOfferte(Offerte offerte) {
+    public Order saveOrder(Order order) {
         EntityManager em = emf.createEntityManager();
-        em.persist(offerte);
+        em.persist(order);
 
         em.getTransaction().begin();
         em.getTransaction().commit();
 
-        return offerte;
-
-}
-
-    @Override
-    public Offerte readOfferte(Integer id) {
-        EntityManager em = emf.createEntityManager();
-
-        return em.find(Offerte.class, id);
+        return order;
 
     }
 
     @Override
-    public boolean deleteOfferte(Integer id) {
+    public Order readOrder(Integer id) {
         EntityManager em = emf.createEntityManager();
-        Offerte o = em.find(Offerte.class, id);
 
-        if (o == null) return false;
+        return em.find(Order.class, id);
+
+    }
+
+    @Override
+    public boolean deleteOrder(Integer id) {
+        EntityManager em = emf.createEntityManager();
+        Order or = em.find(Order.class, id);
+
+        if (or == null) return false;
         else {
-            em.remove(o);
+            em.remove(or);
             em.getTransaction().begin();
             em.getTransaction().commit();
             return true;
@@ -49,7 +49,7 @@ public class OfferteRepositoryImpl implements OfferteRepository {
     }
 
     @Override
-    public boolean deleteOfferte(Offerte offerte) {
+    public boolean deleteOrder(Order order) {
         return false;
     }
 }

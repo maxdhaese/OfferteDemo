@@ -1,7 +1,6 @@
 package be.intecbrussel;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import java.util.List;
 
 @Entity
@@ -11,11 +10,14 @@ public class Client {
     private Integer idClient;
     private String name;
     private String address;
-    @Email
-    private String email;
+//    @Email
+//    private String email;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private List<Offerte> offerteList;
+
+    @OneToOne
+    private Order order;
 
     public Client() {
     }
@@ -44,13 +46,13 @@ public class Client {
         this.address = address;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+//    public String getEmail() {
+//        return email;
+//    }
+//
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
 
     public List<Offerte> getOfferteList() {
         return offerteList;

@@ -1,9 +1,6 @@
 package be.intecbrussel;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -12,10 +9,20 @@ public class Product {
     @GeneratedValue
     private Integer idProduct;
 
-    @ManyToMany(mappedBy = "productList")
+    @ManyToMany
     private Set<Offerte> offerteSet;
 
-    public Product() {
+    @ManyToOne
+    private Order order;
+
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getIdProduct() {
@@ -30,4 +37,21 @@ public class Product {
     public void setOfferteSet(Set<Offerte> offerteSet) {
         this.offerteSet = offerteSet;
     }
+
+    public Product setIdProduct(Integer idProduct) {
+        this.idProduct = idProduct;
+        return this;
+    }
+
+
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 }
+
+

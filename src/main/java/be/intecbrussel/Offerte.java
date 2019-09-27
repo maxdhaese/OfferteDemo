@@ -17,6 +17,9 @@ public class Offerte {
     @ManyToMany
     private List<Product> productList;
 
+    @OneToOne
+    private Order order;
+
     public Offerte() {
     }
 
